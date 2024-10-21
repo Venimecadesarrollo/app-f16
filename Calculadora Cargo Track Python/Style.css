@@ -1,0 +1,320 @@
+/* Asegurar que el body ocupe toda la altura de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo general del body con fondo */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('Imagenes/Fondo\ calculadora.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #696f6d;
+}
+
+/* Contenedor principal para mantener el contenido centrado y flex */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor de la calculadora */
+.calculator-container {
+    background-color: rgb(33, 42, 113);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 550px;
+    margin: 60px auto;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+label {
+    margin-top: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    flex: 3 1 20%;
+    margin-bottom: 10px;
+}
+
+input[type="number"], select {
+    flex: 2 1 45%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    background-color: #f9f9f9;
+    margin-bottom: 25px;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #ffffff;
+    color: rgb(16, 28, 54);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff;
+}
+
+button:active {
+    background-color: #ffffff;
+}
+
+/* Estilos para los resultados */
+#results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none;
+}
+
+#results p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+#results p strong {
+    color: #00796b;
+}
+
+#small-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#small-button:hover {
+    background-color: #c0392b;
+}
+
+/* Estilos para los campos de peso */
+#kilos-input,
+#libras-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#kilos,
+#libras {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-left: 0;
+    transition: border-color 0.3s;
+}
+
+#kilos:focus,
+#libras:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+/* Estilos para los campos de ancho, largo y alto */
+#ancho-input,
+#largo-input,
+#alto-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#ancho,
+#largo,
+#alto {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-left: 0;
+    transition: border-color 0.3s;
+}
+
+#ancho:focus,
+#largo:focus,
+#alto:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+/* Estilos para el campo de cantidad de paquetes */
+#cantidad-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#cantidad {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-left: 112px;
+    transition: border-color 0.3s;
+}
+
+#cantidad:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+/* Estilos para el campo de valor declarado (seguro) */
+#valor-declarado-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#valor-declarado {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-left: 0;
+    transition: border-color 0.3s;
+}
+
+#valor-declarado:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+/* Estilos para la sección de seguro de envío */
+#seguro-envio {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para la nota de clarificación */
+.nota-clarificacion {
+    color: #e74c3c;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Footer personalizado */
+footer.custom-footer {
+    background-color: #242222;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+footer .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+footer .footer-section {
+    flex: 1;
+    padding: 10px;
+}
+
+footer .footer-bottom {
+    padding: 10px 0;
+    background-color: #000000;
+}
+
+/* Estilos responsive */
+
+/* Para dispositivos de hasta 768px (teléfonos y tablets) */
+@media (max-width: 768px) {
+    .calculator-container {
+        width: 100%;
+        margin: 20px 10px;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="number"], select {
+        flex: 1 100%;
+        margin-bottom: 15px;
+    }
+
+    label {
+        flex: 1 100%;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    #kilos, #libras, #ancho, #largo, #alto, #cantidad {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #valor-declarado {
+        width: 100%;
+    }
+}
+
+/* Para dispositivos de hasta 1024px (tabletas y pantallas medianas) */
+@media (max-width: 1024px) {
+    .calculator-container {
+        width: 90%;
+        max-width: 600px;
+    }
+}
