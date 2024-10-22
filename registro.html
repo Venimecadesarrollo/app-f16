@@ -20,6 +20,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
 </head>
 
 <body>
@@ -741,7 +742,7 @@
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td><input name="button3" type="submit" class="ntext-button-blue-small" id="button3" value="Enviar">
+                      <td><input name="button3" type="submit" class="ntext-button-blue-small" id="button3" value="Enviar" onclick="sendFormData(event)">
                         <input name="action" type="hidden" id="action" value="search">
                         <input name="consignee" type="hidden" id="consignee" value="Y"></td>
                       <td>&nbsp;</td>
@@ -754,5 +755,27 @@
             <br>
           </form>
     </div>
+    <script>
+      function sendFormData(event) {
+          event.preventDefault();
+          const form = event.target.closest("form");
+          const formData = new FormData(form);
+
+          const data = {};
+          formData.forEach((value, key) => {
+              data[key] = value;
+          });
+
+          console.log('Data to send:', data);
+
+          axios.post('http://localhost:3001/send-data', data)
+              .then(response => {
+                  console.log('Data sent successfully:', response.data);
+              })
+              .catch(error => {
+                  console.error('Error sending data:', error);
+              });
+      }
+  </script>
 </body>
 </html>
