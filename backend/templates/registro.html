@@ -27,20 +27,20 @@
 <body>
     <div class="form-container">
         <h5>Registrarse</h5>
-        <form name="form1" method="post" action="">
-	      
+        <form name="form1" method="post" action="/process-register/">
+          {% csrf_token %}
             <br>
             <table width="100%" cellpadding="5" cellspacing="0" class="insert">
               <tbody>
                 <tr>
                   <td><table width="100%" cellpadding="2" cellspacing="0">
                     
-                    <tr>
+                    {% comment %} <tr>
                       <td width="75">Empresa</td>
                       <td valign="top"><input name="company" type="text" class="ntext" id="company"  onfocus="checkColor1(this)" onblur="checkColor2(this)" value="" size="40"></td>
                       <td>Casillero</td>
                       <td><input name="box_number" type="text" class="ntext" id="box_number" value="" size="10" onfocus="checkColor1(this)" onblur="checkColor2(this)"></td>
-                    </tr>
+                    </tr> {% endcomment %}
                     <tr>
                       <td>Contacto</td>
                       <td><input name="first_name" type="text" class="ntext" id="first_name" placeholder="Nombre" onFocus="checkColor1(this)" onBlur="checkColor2(this)" value="" size="15">
@@ -63,13 +63,6 @@
                     <tr>
                       <td>&nbsp;</td>
                       <td><input name="address2" type="text" class="ntext" id="address2" value="" size="40" onFocus="checkColor1(this)" onBlur="checkColor2(this)"></td>
-                      <td>Fax</td>
-                      <td>+
-                        <input name="fax_cc" type="text" class="ntext" id="fax_cc" value="" size="2" onFocus="checkColor1(this)" onBlur="checkColor2(this)">
-  (
-  <input name="fax_ac" type="text" class="ntext" id="fax_ac" value="" size="3" onFocus="checkColor1(this)" onBlur="checkColor2(this)">
-  )
-  <input name="fax" type="text" class="ntext" id="fax" value="" size="15" onFocus="checkColor1(this)" onBlur="checkColor2(this)"></td>
                     </tr>
                     <tr>
                       <td>Ciudad</td>
@@ -743,7 +736,7 @@
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
-                      <td><input name="button3" type="submit" class="ntext-button-blue-small" id="button3" value="Enviar" onclick="sendFormData(event)">
+                      <td><input name="button3" type="submit" class="ntext-button-blue-small" id="button3" value="Enviar">
                         <input name="action" type="hidden" id="action" value="search">
                         <input name="consignee" type="hidden" id="consignee" value="Y"></td>
                       <td>&nbsp;</td>
@@ -756,7 +749,7 @@
             <br>
           </form>
     </div>
-    <script>
+    {% comment %} <script>
       function sendFormData(event) {
           event.preventDefault();
           const form = event.target.closest("form");
@@ -768,8 +761,14 @@
           });
 
           console.log('Data to send:', data);
+          const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-          axios.post('http://localhost:3001/send-data', data)
+          const headers = {
+            "X-CSRFToken": csrftoken,
+            withCredentials: true
+          }
+
+          axios.post('http://localhost:8000/process-register/', data, {headers})
               .then(response => {
                   console.log('Data sent successfully:', response.data);
               })
@@ -777,6 +776,6 @@
                   console.error('Error sending data:', error);
               });
       }
-  </script>
+  </script> {% endcomment %}
 </body>
 </html>
