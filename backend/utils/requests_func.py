@@ -46,8 +46,18 @@ def login(user: str, password: str, session: requests.Session) -> requests.Respo
     home_response = session.get(base_url)
     cookie_value = f"user={user};{home_response.headers['Set-Cookie']}"
     session.headers.update({"cookie": cookie_value})
+    cookies = [
+        {"name": "user", "value": user, "path": "/", "domain": "bva.cargotrack.net"},
+        {
+            "name": "ASPSESSIONIDQWQDQDRT",
+            "value": home_response.headers["Set-Cookie"].split(";")[0].split("=")[1],
+            "path": "/",
+            "secure": True,
+            "domain": "bva.cargotrack.net",
+        },
+    ]
 
     # ? Iniciamos sesión
     data = {"user": user, "password": password, "Submit": "Log In", "action": "login"}
     login_response = session.post(url=base_url, data=data, allow_redirects=True)
-    return login_response
+    return login_response, cookies
