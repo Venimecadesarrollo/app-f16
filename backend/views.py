@@ -1,13 +1,8 @@
-import os
 from dotenv import load_dotenv
-
-import requests
+from django.shortcuts import render, redirect
+from .forms import UserProfileForm
 from django.shortcuts import render
-from django.http import HttpResponse
-
-from backend.utils.requests_func import login
-from backend.forms import CargoTrackForm
-
+from django.core.mail import send_mail
 
 # ? Load environment variables
 load_dotenv()
@@ -25,44 +20,36 @@ def registro(request):
 def calculadora(request):
     return render(request, "calculadora.html")
 
-
-def process_register(request):
-    session: requests.Session = requests.Session()
-    user = os.getenv("CARGOTRACK_USER")
-    password = os.getenv("CARGOTRACK_PASS")
-    email = os.getenv("CARGOTRACK_EMAIL")
-
-    if request.method == "POST":
-        form = CargoTrackForm(request.POST)
-
+def registro(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST)
         if form.is_valid():
-            # ! If form is valid, send data to CargoTrack
-            data = form.cleaned_data
-            print(data)
+            user_profile = form.save()
+            
+            # Datos para enviar por correo
+            subject = 'Nuevo Registro de Usuario'
+            message = (
+                f'Nombre: {user_profile.nombre}\n'
+                f'Apellido: {user_profile.apellido}\n'
+                f'País: {user_profile.pais}\n'
+                f'Estado: {user_profile.estado}\n'
+                f'Ciudad: {user_profile.ciudad}\n'
+                f'Dirección: {user_profile.direccion}\n'
+                f'Código Postal: {user_profile.codigo_postal}\n'
+                f'Correo: {user_profile.correo}\n'
+                f'Teléfono: {user_profile.telefono}\n'
+            )
+            from_email = 'administracion@f16cargo.com'
+            recipient_list = ['administracion@f16cargo.com']  # Cambia por el correo al que quieras enviar
+            
+            # Enviar correo
+            send_mail(subject, message, from_email, recipient_list)
 
-            # ? Try to login 3 times
-            max_attempts = 3
-            attempts = 0
-            login_response = None
+            return redirect('registro_creado')  # Cambia por la URL de tu página principal
+    else:
+        form = UserProfileForm()
+    
+    return render(request, 'registro.html', {'form': form})
 
-            while attempts < max_attempts:
-                login_response: requests.Response = login(user, password, session)
-                if login_response.status_code == 200:
-                    break
-                attempts += 1
-
-            # ! If no good response, return 500 response
-            if login_response.status_code != 200:
-                return HttpResponse("Login failed after multiple attempts")
-
-            # ? Send data to CargoTrack
-            # ? Use the same session to keep the login
-            data["button3"] = "Enviar"
-            data["action"] = "search"
-            data["consignee"] = "Y"
-            data["email"] = email
-            creation_response = session.post("https://bva.cargotrack.net/appl2.0/agent/accounts_add.asp", data=data, allow_redirects=True)
-        else:
-            return HttpResponse(form.errors, status=400)
-
-    return HttpResponse()
+def registro_creado(request):
+    return render(request, "registro_creado.html")

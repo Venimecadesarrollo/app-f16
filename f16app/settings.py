@@ -125,3 +125,12 @@ STATICFILES_DIR = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.f16cargo.com'
+EMAIL_PORT = 587  # o el puerto que use tu proveedor de correo
+EMAIL_USE_TLS = True  # Cambiar a False si se usa SSL
+EMAIL_USE_SSL = False  # Cambiar a True si se usa SSL
+EMAIL_HOST_USER = 'administracion@f16cargo.com'
+EMAIL_HOST_PASSWORD = 'admin294194046'
+DEFAULT_FROM_EMAIL = 'administracion@f16cargo.com'

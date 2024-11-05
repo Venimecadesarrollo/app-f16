@@ -1,24 +1,8 @@
 from django import forms
+from .models import UserProfile
 
-class CargoTrackForm(forms.Form):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    address1 = forms.CharField(max_length=100)
-    address2 = forms.CharField(max_length=100, required=False)
-    phone_cc = forms.CharField(max_length=3, required=False)
-    phone_ac = forms.CharField(max_length=3, required=False)
-    phone = forms.CharField(max_length=15, required=False)
-    city = forms.CharField(max_length=100)
-    mobile_cc = forms.CharField(max_length=3)
-    mobile_ac = forms.CharField(max_length=3)
-    mobile = forms.CharField(max_length=15)
-    state = forms.CharField(max_length=100)
-    zip_code = forms.CharField(max_length=10)
-    language = forms.CharField(max_length=100, required=False)
-    notify_whs = forms.BooleanField(required=False)
-    notify_master = forms.BooleanField(required=False)
-    send_email = forms.BooleanField(required=False)
-    email = forms.EmailField()
-    country = forms.CharField(max_length=100)
-    location = forms.CharField(max_length=100)
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['nombre', 'apellido', 'pais', 'estado', 'ciudad', 'direccion', 'codigo_postal', 'correo', 'telefono']
+
