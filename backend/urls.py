@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib import admin
 from . import views
-from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('', views.index, name='index'),  # Ruta para la página principal
@@ -10,5 +10,6 @@ urlpatterns = [
     path('calculadora/', views.calculadora, name='calculadora'),
     path('admin/', admin.site.urls),
     path('registro-creado/', views.registro_creado, name='registro_creado'),
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login')
+    path('msj-contacto/', views.msj_contacto, name='msj_contacto'),
+    path('msj-login/', views.msj_login, name='msj_login'),
 ]

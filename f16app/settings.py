@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-mr3hjwiu&=9xcz3d-z#i5j!&pvu)t1oza9m6q+q7=c1&8kq#^m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -117,6 +118,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Configuración de archivos media (si usas media para subir archivos)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIR = [
     BASE_DIR / "backend/static"
 ]
@@ -134,3 +142,5 @@ EMAIL_USE_SSL = False  # Cambiar a True si se usa SSL
 EMAIL_HOST_USER = 'administracion@f16cargo.com'
 EMAIL_HOST_PASSWORD = 'admin294194046'
 DEFAULT_FROM_EMAIL = 'administracion@f16cargo.com'
+
+DEFAULT_FROM_EMAIL_CONTACT = 'contacto@f16cargo.com'

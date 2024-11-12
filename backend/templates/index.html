@@ -27,9 +27,9 @@
 
 <body>
 <!-- Navbar Start -->
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand ml-lg-3">
+<div class="container-fluid p-0" >
+    <nav  class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="/" class="navbar-brand ml-lg-3">
             <img src="{% static 'img/Recurso-2 (1).png' %}" alt="Logo" class="img-fluid" style="max-width: 300px; height: auto; margin-right: 10px; padding-left: 10%;">
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -64,8 +64,10 @@
                             <i class="fas fa-user"></i> <!-- Icono de Font Awesome -->
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="loggin/" target"_blank" >Iniciar Sesión</a>
+                            <a class="dropdown-item" href="msj-login/" target"_blank" >Iniciar Sesión</a>
                             <a class="dropdown-item" href="registro/" target"_blank">Registrarse</a>
+                            <a class="dropdown-item" href="{% static 'Políticas y Condiciones F16.pdf' %}" target="_blank">Políticas y condiciones</a>
+
                         </div>
                     </li>
                 </ul>
@@ -77,15 +79,8 @@
 <!-- Header Start -->
 <div class="jumbotron jumbotron-fluid mb-0"> <!-- Cambié mb-5 por mb-0 para eliminar el margen inferior -->
     <div class="container text-center py-5">
-        <h1 class="mb-4" style="color: #ffffff; font-size: 60px;">¿Dónde está tu carga?</h1>
-        <h1 class="text-white display-3 mb-5">Descúbrelo en tiempo real con solo un clic.</h1>
-        <div class="mx-auto" style="width: 100%; max-width: 600px;">
-            <div class="input-group">
-                <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Ingrese su ID">
-                <div class="input-group-append">
-                    <button class="btn btn-primary px-3">Rastree su carga</button>
-                </div>
-            </div>
+        <h1 class="mb-4" style="color: #ffffff; font-size: 60px;">Registrate con nosotros</h1>
+        <h1 class="text-white display-3 mb-5">Puedes gestionar tus envíos y resolver tus consultas a través de nuestro correo electrónico o mediante WhatsApp. Solo tiene que registrarte</h1>
         </div>
     </div>
 </div>
@@ -129,7 +124,7 @@
         <div class="row align-items-center">
             <!-- Coloca el texto a la izquierda en pantallas grandes -->
             <div class="col-lg-7 py-5 py-lg-0">
-                <h1 class="mb-4">Calcula tu tarifa!</h1>
+                <h1 class="mb-4">¡Calcula tu tarifa!</h1>
                 <p class="mb-4" style="color: black;">Calcula tu tarifa de envío de manera rápida y sencilla. Solo ingresa las dimensiones y el peso de tu paquete, selecciona el tipo de envío (aéreo o marítimo), y obtén una cotización personalizada en segundos.</p>
             </div>
             <!-- Coloca la imagen a la derecha en pantallas grandes -->
@@ -153,7 +148,7 @@
     <div class="container" id="nosotros">
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <img class="img-fluid w-100 image-left" src="{% static 'img/avion-f16.jpeg' %}" alt="" style="border-radius: 5px;">
+                <img class="img-fluid w-100 image-left" src="{% static 'img/logo_color.png' %}" alt="" style="border-radius: 5px;">
             </div>
             <div class="col-lg-7 py-5 py-lg-0">
                 <h4 class="text-uppercase font-weight-bold" style="color: #ffffff">NOSOTROS</h4>
@@ -178,8 +173,8 @@
             <!-- Coloca el texto a la izquierda en pantallas grandes -->
             <div class="col-lg-7 align-items-center order-lg-1">
                 <h4 class="text-primary text-uppercase font-weight-bold">¿Como funciona?</h4>
-                <h1 class="mb-4">Registro y Login para Clientes</h1>
-                <p class="mb-4">Accede a la opción "Iniciar Sesión / Registrarse" en la parte superior derecha de la página. Completa el formulario con tu nombre, correo electrónico y una contraseña para crear tu cuenta. Una vez registrado, tendrás acceso a la plataforma para gestionar todos tus envíos, desde la creación hasta la entrega final.</p>
+                <h1 class="mb-4">Registrate</h1>
+                <p class="mb-4">En la parte superior derecha de la página. Completa el formulario con los datos solicitados. Una vez registrado, nuestro personal de atencion al cliente se estara comunicando con usted via telefonica y correo electronico para comenzar a gestionar todos tus envíos.</p>
             </div>
             <!-- Coloca la imagen a la derecha en pantallas grandes -->
             <div class="col-lg-5 pb-4 pb-lg-0 order-lg-2">
@@ -200,8 +195,8 @@
                 <img class="img-fluid w-100" style="border-radius: 10px;" src="{% static 'img/Captura de pantalla (28).png' %}" alt="">
             </div>
             <div class="col-lg-7">
-                <h1 class="mb-4">Carga de facturas y número de seguimiento</h1>
-                <p class="mb-4">Una vez registrado, puedes cargar los detalles de tus envíos, incluyendo el número de factura y el número de seguimiento del paquete. Nuestra plataforma te permite gestionar todos tus envíos en un solo lugar, ya sea que seas un cliente particular o una empresa con múltiples paquetes.</p>
+                <h1 class="mb-4">Envio de facturas y número de seguimiento</h1>
+                <p class="mb-4">Una vez realizadas sus compras, por favor enviar via correo electronico la factura y el número de seguimiento de sus paquetes. Nuestro personal de atencion al cliente esta a la disposicion para ayudarlo a gestionar todos sus envíos. correo electronico: info@f16cargo.com</p>
             </div>
         </div>
     </div>
@@ -216,7 +211,7 @@
             <!-- Coloca el texto a la izquierda en pantallas grandes -->
             <div class="col-lg-7 align-items-center order-lg-1">
                 <h1 class="mb-4">Cancelar factura y recibir tu carga</h1>
-                <p class="mb-4">Nuestra plataforma te permite revisar tus facturas pendientes y cancelarlas de forma rápida y segura. Una vez completado el pago, recibirás confirmación de la entrega estimada de tu paquete. Todo el proceso está diseñado para ser fácil y eficiente.</p>
+                <p class="mb-4">Nuestro personal administrativo se estara comunicando con usted para suministrarle el detalle de su factura para proceder a la cancelacion de la misma mediente nuestros diferentes metodos de pago y cancelarlas de forma rápida y segura. Una vez completado el pago, recibirás confirmación de la entrega estimada de tu paquete. Todo el proceso está diseñado para ser fácil y eficiente.</p>
             </div>
             <!-- Coloca la imagen a la derecha en pantallas grandes -->
             <div class="col-lg-5 pb-4 pb-lg-0 order-lg-2">
@@ -243,31 +238,32 @@
                 <h2 class="text-primary text-uppercase font-weight-bold" >Contactanos</h2>
                 <div class="contact-form bg-secondary" style="padding: 30px;">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <form name="sentMessage" id="contactForm" method="post" novalidate="novalidate">
+                        {% csrf_token %}
                         <div class="control-group">
-                            <input type="text" class="form-control border-0 p-4" id="name" placeholder="Nombre"
+                            <input type="text" class="form-control border-0 p-4" name="nombre" id="name" placeholder="Nombre"
                                 required="required" data-validation-required-message="Por favor ingrese su nombre" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control border-0 p-4" id="email" placeholder="correo electronico"
-                                required="required" data-validation-required-message="por favor ingrese el correo electrónico" />
+                            <input type="email" class="form-control border-0 p-4" name="email" id="email" placeholder="Correo electrónico"
+                                required="required" data-validation-required-message="Por favor ingrese el correo electrónico" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control border-0 p-4" id="subject" placeholder="asunto"
-                                required="required" data-validation-required-message="por favor ingrese el asunto" />
+                            <input type="text" class="form-control border-0 p-4" name="asunto" id="subject" placeholder="Asunto"
+                                required="required" data-validation-required-message="Por favor ingrese el asunto" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control border-0 py-3 px-4" rows="3" id="message" placeholder="Ingrese su mensaje"
-                                required="required" data-validation-required-message="por favor ingrese su mensaje"></textarea>
+                            <textarea class="form-control border-0 py-3 px-4" rows="3" name="mensaje" id="message" placeholder="Ingrese su mensaje"
+                                required="required" data-validation-required-message="Por favor ingrese su mensaje"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div>
                             <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">Send Message</button>
                         </div>
-                    </form>
+                    </form>                    
                 </div>
             </div>
         </div>
