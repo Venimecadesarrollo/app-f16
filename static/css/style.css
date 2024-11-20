@@ -5,7 +5,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9573,11 +9573,16 @@ p,
 }
 
 .jumbotron {
-  background: linear-gradient(rgba(0, 22, 148, 0.7), rgba(0, 0, 0, 0.8)), url(../img/header.jpg);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 100vh; /* Ocupa el 100% de la pantalla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px; /* Espacio superior para compensar la navbar fija */
+  background: linear-gradient(rgba(0, 22, 148, 0.1), rgba(0, 0, 0, 0.3)), url('../img/header.jpg') no-repeat center center;
+  background-size: cover; /* Asegura que la imagen cubra toda el área sin dejar espacios */
 }
+
+
 
 .btn-play {
   position: relative;
