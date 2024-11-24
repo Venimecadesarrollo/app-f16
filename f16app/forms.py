@@ -1,10 +1,10 @@
 from django import forms
-from .models import UserProfile
+from accounts_app.models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['nombre', 'apellido', 'pais', 'estado', 'ciudad', 'direccion', 'codigo_postal', 'correo', 'telefono']
+        fields = ['nombre', 'apellido', 'pais', 'estado', 'ciudad', 'direccion', 'codigo_postal', 'correo', 'telefono', 'password']
 
 
 class ContactForm(forms.Form):

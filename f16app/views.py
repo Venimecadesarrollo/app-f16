@@ -43,8 +43,8 @@ def index(request):
     return render(request, 'index.html', {'form': form})
 
 
-def registro(request):
-    return render(request, "registro.html")
+# def registro(request):
+#     return render(request, "registro.html")
 
 
 def calculadora(request):
@@ -55,8 +55,12 @@ def registro(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
         if form.is_valid():
+
             user_profile = form.save()
-            
+            user_profile.email = user_profile.correo
+            # Generate a username with form data
+            user_profile.username = f"{user_profile.nombre.lower()}.{user_profile.apellido.lower()}"
+            user_profile.save()
             # Datos para enviar por correo
             subject = 'Nuevo Registro de Usuario'
             message = (

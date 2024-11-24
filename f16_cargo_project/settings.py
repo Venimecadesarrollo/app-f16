@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'f16app',
-    'accounts_users',
+    'accounts_app',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'f16app.urls'
+ROOT_URLCONF = 'f16_cargo_project.urls'
 
 TEMPLATES = [
     {
@@ -69,16 +69,26 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'f16_cargo.wsgi.application'
+WSGI_APPLICATION = 'f16_cargo_project.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'f16_database'),
+        'USER': os.getenv('DB_USER', 'test_user'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'test_password'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -100,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+AUTH_USER_MODEL = 'accounts_app.UserProfile'
 
 
 # Internationalization
