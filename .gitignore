@@ -2,6 +2,7 @@
 
 # Ignore .env files
 .env
+venv/
 
 # Node.js
 node_modules/
